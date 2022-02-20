@@ -31,7 +31,7 @@ alias gp='git push'
 alias mux="tmuxinator"
 alias rmorig='find . -name '"'"'*.orig'"'"' -delete'
 
-# Please, add you own generated ssh-agent here
+# Please, add your own generated ssh-key here
 # {
 #   eval "$(ssh-agent -s)"
 #   ssh-add ~/.ssh/id_rsa
