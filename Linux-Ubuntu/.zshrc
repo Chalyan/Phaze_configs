@@ -14,6 +14,7 @@ alias lS='ls -1FSsh'
 alias ...='../..'
 alias ....='../../..'
 alias mkdirp='mkdir -p'
+alias update-upgrade='sudo apt-get update && sudo apt-get upgrade'
 
 # Pyhton
 alias ipy='/usr/bin/ipython3'

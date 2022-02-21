@@ -13,6 +13,21 @@ There are three configs, both for `Linux-Ubuntu` and `Mac-OS` versions, which yo
 > * [Tmux](https://en.wikipedia.org/wiki/Tmux) configs
 
 ---
+
+## Stuff to install
+    1) Linux-Ubuntu
+> sudo apt install git zsh tmux mc fortune lolcat cowsay build-essential
+
+    After which update software list and Ubuntu software with command:
+> update-upgrade
+
+    2) Mac-OS
+> brew install tmux fortune lolcat cowsay coreutils
+
+    After which update the list of available formulae and upgrade any outdated packages with command:
+> brew-update
+
+---
 \
 \
 \
