@@ -6,11 +6,11 @@ When I first entered [Quality Tech Lab](https://www.qt-lab.com/), I did not know
 ---
 
 ## What configs are there?
-There are three configs:
+There are three configs, both for `Linux-Ubuntu` and `Mac-OS` versions, which you can find in different folders.
 
-* Git configs
-* Zsh configs
-* Tmux configs
+> * [Git](https://git-scm.com/) configs
+> * [Zsh](https://en.wikipedia.org/wiki/Z_shell) configs
+> * [Tmux](https://en.wikipedia.org/wiki/Tmux) configs
 
 ---
 \
