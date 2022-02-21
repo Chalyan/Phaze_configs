@@ -51,10 +51,11 @@ alias gp='git push'
 alias mux="tmuxinator"
 alias rmorig='find . -name '"'"'*.orig'"'"' -delete'
 
-{
-    eval "$(ssh-agent -s)"
-    ssh-add ~/.ssh/id_qtlab
-} &> /dev/null
+# Please, add your own generated ssh-keys here
+# {
+#     eval "$(ssh-agent -s)"
+#     ssh-add ~/.ssh/id_qtlab
+# } &> /dev/null
 
 # mux/tmux
 alias tmux='stty stop "" -ixoff; tmux'
