@@ -4,21 +4,41 @@ USER=$(whoami)
 zstyle ':completion:*' completer _complete _ignored _approximate
 zstyle :compinstall filename "/home/$USER/.zshrc"
 
-# Base16 Shell
-BASE16_SHELL="$HOME/.config/base16-shell/"
-[ -n "$PS1" ] && [ -s "$BASE16_SHELL/profile_helper.sh" ] && eval "$("$BASE16_SHELL/profile_helper.sh")"
-
-# misc
+# zsh
+setopt auto_cd
 alias ll='ls -al'
 alias lS='ls -1FSsh'
 alias ...='../..'
 alias ....='../../..'
 alias mkdirp='mkdir -p'
+alias rf='rm -rf'
 
-# Pyhton
-alias ipy='/usr/bin/ipython3'
-alias py='/usr/bin/python3.8'
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+# Coloring and transparency setings
+
+[ -n "$XTERM_VERSION" ] && transset-df -a >/dev/null
+
+autoload -U colors && colors
+
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+# End of lines configured by zsh-newuser-install
+
+#chicken-scheme
+alias chickens='chicken-status'
+alias chickeni='chicken-install'
+alias chickenu='chicken-uninstall'
+alias chickenrun='chicken-run'
+alias chickenruntests='export CSI=csi; make all_tests'
+
+# python
 alias python='python3'
+alias py='python3'
+alias pip='pip3'
 
 # git
 alias gs='git status'
@@ -31,11 +51,10 @@ alias gp='git push'
 alias mux="tmuxinator"
 alias rmorig='find . -name '"'"'*.orig'"'"' -delete'
 
-# Please, add your own generated ssh-key here
-# {
-#   eval "$(ssh-agent -s)"
-#   ssh-add ~/.ssh/id_rsa
-# }>/dev/null 2>&1
+{
+    eval "$(ssh-agent -s)"
+    ssh-add ~/.ssh/id_qtlab
+} &> /dev/null
 
 # mux/tmux
 alias tmux='stty stop "" -ixoff; tmux'
@@ -53,24 +72,6 @@ start_tmux() {
   local DEFAULT_NAME="Default"
 }
 
-autoload -Uz compinit
-compinit
-# End of lines added by compinstall
-# Coloring and transparency setings
-
-[ -n "$XTERM_VERSION" ] && transset-df -a >/dev/null
-
-autoload -U colors && colors
-
-# Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
-# End of lines configured by zsh-newuser-install
-
-setopt autocd extendedglob
-unsetopt beep
-
 source ~/.git-prompt.sh
 RPROMPT="[%{$fg_no_bold[yellow]%}%?%{$reset_color%}]"
 setopt PROMPT_SUBST
@@ -82,8 +83,8 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 # enables cowsay and fortune.
-if [ -x /usr/games/cowsay -a -x /usr/games/fortune ]; then
-  fortune | cowsay -f $(ls /usr/share/cowsay/cows/ | shuf -n1) | lolcat
+if [ -x /opt/homebrew/bin/cowsay -a -x /opt/homebrew/bin/fortune ]; then
+  fortune | cowsay -f $(ls /opt/homebrew/Cellar/cowsay/3.04_1/share/cows | gshuf -n1) | lolcat
 fi
 
 export EDITOR=vim
@@ -93,14 +94,6 @@ export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}
 export SDKMAN_DIR="/home/$USER/.sdkman"
 [[ -s "/home/$USER/.sdkman/bin/sdkman-init.sh" ]] && source "/home/$USER/.sdkman/bin/sdkman-init.sh"
 
-DOTTY_HOME="/home/$USER/devel/dotty-0.20.0"
-
-export PATH=$HOME/.local/bin:$DOTTY_HOME/bin:$PATH
-
-export RANGER_LOAD_DEFAULT_RC=FALSE
-
-plugins=(git colored-man-pages colorize)
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+#brew
+export PATH=/opt/homebrew/bin:/Library/Frameworks/Python.framework/Versions/3.10/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+alias brew-update='brew update && brew upgrade && brew cleanup'
