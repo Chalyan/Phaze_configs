@@ -51,12 +51,6 @@ alias gp='git push'
 alias mux="tmuxinator"
 alias rmorig='find . -name '"'"'*.orig'"'"' -delete'
 
-# Please, add your own generated ssh-key here
-# {
-#     eval "$(ssh-agent -s)"
-#     ssh-add ~/.ssh/id_qtlab
-# } &> /dev/null
-
 # mux/tmux
 alias tmux='stty stop "" -ixoff; tmux'
 alias muxv='mux start v ~'
@@ -85,7 +79,7 @@ export LANG=en_US.UTF-8
 
 # enables cowsay and fortune.
 if [ -x /opt/homebrew/bin/cowsay -a -x /opt/homebrew/bin/fortune ]; then
-  fortune | cowsay -f $(ls /opt/homebrew/Cellar/cowsay/3.04_1/share/cows | gshuf -n1) | lolcat
+  /opt/homebrew/bin/fortune | /opt/homebrew/bin/cowsay -f $(ls /opt/homebrew/Cellar/cowsay/3.04_1/share/cows | /opt/homebrew/bin/gshuf -n1) | /opt/homebrew/bin/lolcat
 fi
 
 export EDITOR=vim
@@ -98,3 +92,4 @@ export SDKMAN_DIR="/home/$USER/.sdkman"
 #brew
 export PATH=/opt/homebrew/bin:/Library/Frameworks/Python.framework/Versions/3.10/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 alias brew-update='brew update && brew upgrade && brew cleanup'
+
